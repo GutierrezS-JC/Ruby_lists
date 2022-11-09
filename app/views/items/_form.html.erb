@@ -1,0 +1,37 @@
+<%= form_with(model: [@list, item]) do |form| %>
+  <% if item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :list_id, style: "display: block", :class => 'form-label' %>
+    <%= form.text_field :list_id, :class => 'form-control', style: "width: 25%" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, style: "display: block", :class => 'form-label'%>
+    <%= form.text_field :description, :class => 'form-control', style: "width: 25%"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :quantity, style: "display: block", :class => 'form-label'%>
+    <%= form.number_field :quantity, :class => 'form-control', style: "width: 25%"%>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :completed %>
+    <%= form.check_box :completed %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
